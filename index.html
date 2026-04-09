@@ -7,7 +7,7 @@
   <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Frontend Mentor | Browser extensions manager UI</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -26,26 +26,26 @@
 <body>
   <header>
     <div class="header-container card container">
-      <img src="/assets/images/logo.svg" alt="Logo" id="logo">
+      <img src="assets/images/logo.svg" alt="Logo" id="logo">
       <button id="theme-toggle" class="theme-toggle">
-        <img id="theme-icon" src="/assets/images/icon-moon.svg" alt="theme">
+        <img id="theme-icon" src="assets/images/icon-moon.svg" alt="theme">
       </button>
 
     </div>
   </header>
-  <div class="container extensions-list">
+  <div class="container extensions-list" >
     <div class="extensions-list-header">
       <h2>Extensions List</h2>
       <div class="nav-links">
         <ul>
-          <li><a href="#">All</a></li>
-          <li><a href="#">Active</a></li>
-          <li><a href="#">Inactive</a></li>
+          <li><button onclick="getAllExtensions()">All</button></li>
+          <li><button onclick="getActiveExtensions()">Active</button></li>
+          <li><button onclick="getInactiveExtensions()">Inactive</button></li>
         </ul>
       </div>
     </div>
 
-    <div class="extensions-container">
+    <div class="extensions-container" id="extensions-container">
       <!-- <div class="extensions-card card">
         <div class="extensions-card-body">
           <img src="/assets/images/logo-devlens.svg" class="extensions-logo" alt="DevLens">
@@ -72,7 +72,7 @@
     Coded by <a href="#">MGHAR SAFAA</a>.
   </footer>
 
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
