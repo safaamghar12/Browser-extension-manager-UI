@@ -128,9 +128,10 @@ header .header-container .theme-toggle{
     padding: 0;
     margin: 0;
 }
-.extensions-list-header ul li a {
-    text-decoration: none;
+.extensions-list-header ul li button {
+    /* text-decoration: none; */
     padding: 8px 18px;
+    border: none;
     border-radius: 30px;
     font-size: 20px;
     font-weight: 500;
@@ -140,11 +141,11 @@ header .header-container .theme-toggle{
      box-shadow: 0 4px 8px rgba(0,0,0,0.08); 
 }
 
-.extensions-list-header ul li a:hover {
+.extensions-list-header ul li button:hover {
     background:var(--btn-bg-hover);
     color: var(--text-color);
 }
-.extensions-list-header ul li a:focus {
+.extensions-list-header ul li button:focus {
     background:var(--btn-bg-active);
     color: var(--text-color);
 }
@@ -164,12 +165,8 @@ header .header-container .theme-toggle{
     border-radius: 10px;
     padding: 18px;
     gap: 40px;
-  
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: space-between; */
-    /* gap: 20px; */
     transition: 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08); 
 }
 
 .extensions-card-body{
@@ -178,13 +175,14 @@ header .header-container .theme-toggle{
     /* align-items: center; */
     align-items: flex-start;
     margin-bottom: 40px;
+
 }
 
 
-/* .extensions-card:hover{
+.extensions-card:hover{
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-} */
+}
 
 
 .extensions-logo{
