@@ -30,18 +30,11 @@ const container = document.getElementById("extensions-container");
 
 const data = [];
 
-function getAllExtensions() {
+let currentFilter = "all"; 
 
-  container.innerHTML = "";
-fetch("data.json")
-  .then(res => res.json() 
-  )
-  .then(extensions => {
-    data.push(...extensions);
-    extensions.forEach(ext => {
-      const card = document.createElement("div");
+function renderExtention(ext,index) {
+ const card = document.createElement("div");
       card.className = "extensions-card card";
-
       card.innerHTML = `
         <div class="extensions-card-body">
           <img src="${ext.logo}" class="extensions-logo" alt="${ext.name}">
@@ -53,30 +46,62 @@ fetch("data.json")
         </div>
 
         <div class="extensions-card-footer">
-          <button class="remove" onclick=remove()>Remove</button>
+          <button class="remove" onclick=remove(${index})>Remove</button>
 
           <label class="switch">
-            <input type="checkbox" ${ext.isActive ? "checked" : ""}>
+            <input type="checkbox" ${ext.isActive ? "checked" : ""}  onchange="toggleExtension(${index})">
             <span class="slider"></span>
           </label>
         </div>
       `;
 
       container.appendChild(card);
+}
+function fetchExtensions() {
+ currentFilter = "all";
+  container.innerHTML = "";
+fetch("data.json")
+  .then(res => res.json() 
+  )
+  .then((extensions, index) => {
+    data.push(...extensions);
+    // renderExtention(extensions);
+    extensions.forEach((ext) => {
+      renderExtention(ext ,index);
     });
-
   })
   .catch(err => console.log(err));
 }
 console.log(data);
 
-getAllExtensions();
+fetchExtensions();
+
+function getAllExtensions() {
+  currentFilter = "all";
+   container.innerHTML = "";
+    
+  data.forEach((ext,index) => {
+    renderExtention(ext,index);
+  });
+  
+    
+}
 
 function getActiveExtensions() {
+  currentFilter = "active";
+  container.innerHTML = "";
+    
+  data.forEach((ext,index) => {
+    if (ext.isActive) {
+      renderExtention(ext,index);
+    }
+  });
+}
+function getActive_Extensions() {
   container.innerHTML = "";
   
  fetch("data.json")
-  .then(res => res.json() 
+  .then(res => res.json()
   )
   .then(extensions => {
     extensions.forEach(ext => {
@@ -106,10 +131,11 @@ function getActiveExtensions() {
     });
 
   })
-  .catch(err => console.log(err));
+    .catch(err => console.log(err));
+  
 }
 
-function getInactiveExtensions() {
+function getInactive_Extensions() {
   container.innerHTML = "";
   fetch("data.json")
   .then(res => res.json() 
@@ -145,12 +171,46 @@ function getInactiveExtensions() {
   .catch(err => console.log(err));
 }
 
-function remove() {
-  alert("Coming soon !");
+function getInactiveExtensions() {
+  currentFilter = "inactive";
+  container.innerHTML = "";
+    
+  data.forEach((ext ,index)=> {
+    if (!ext.isActive) {
+      renderExtention(ext, index);
+    }
+  });
 }
 
-function activateExtension() {
-  alert("Coming soon !");
+function remove(index) {
+  data.splice(index, 1);
+   switch (currentFilter) {
+    case "active":
+       getActiveExtensions();
+      break;
+
+    case "inactive":
+      getInactiveExtensions();
+      break;
+
+    default:
+      getAllExtensions();
+  }
+}
+
+function toggleExtension(index) {
+  data[index].isActive = !data[index].isActive;
+  switch (currentFilter) {
+    case "active":
+       getActiveExtensions();
+      break;
+    case "inactive":
+      getInactiveExtensions();
+      break;
+
+    default:
+      getAllExtensions();
+  }
 }
 
 

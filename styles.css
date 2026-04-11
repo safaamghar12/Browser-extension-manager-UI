@@ -227,15 +227,14 @@ header .header-container .theme-toggle{
     /* transition: 0.2s; */
 }
 
-/* .remove:hover{
+.remove:hover{
     background: var(--btn-bg-hover);
-    color: white;
     border-color: var(--btn-bg-hover);
-} */
+}
 
-/* .remove:active{
+.remove:active{
   background: var(--btn-bg-active);
-} */
+}
 
 .extensions-card-footer .switch input{
   display: none;
