@@ -52,6 +52,7 @@
     --btn-bg-hover: hsl(3, 71%, 56%);
     --btn-bg-active:hsl(3, 77%, 44%);
     --border-color :hsl(0, 0%, 78%);
+    --border-focus :hsl(3, 77%, 44%);
     --btn-bg-inactive:hsl(226, 11%, 37%);
 
     
@@ -65,6 +66,7 @@
     --card-color: hsl(226, 25%, 17%);
     --main-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
     --btn-bg-active: hsl(3, 86%, 64%);
+    --border-focus :hsl(3, 86%, 64%);
 
 }
 
@@ -105,6 +107,11 @@ header .header-container .theme-toggle{
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s ease;
+}
+
+header .header-container .theme-toggle:focus{
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
 }
 
 .extensions-list{
@@ -148,7 +155,13 @@ header .header-container .theme-toggle{
 .extensions-list-header ul li button:focus {
     background:var(--btn-bg-active);
     color: var(--text-color);
+    outline: 3px solid var(--border-focus);
+    outline-offset: 3px;
 }
+/* .extensions-list-header ul li button:active {
+    background:var(--btn-bg-active);
+    color: var(--text-color);
+} */
 
 /* ===== Extensions ===== */
 
@@ -227,23 +240,31 @@ header .header-container .theme-toggle{
     /* transition: 0.2s; */
 }
 
-.remove:hover{
+.extensions-card-footer .remove:hover{
     background: var(--btn-bg-hover);
     border-color: var(--btn-bg-hover);
 }
 
-.remove:active{
+.extensions-card-footer .remove:focus{
   background: var(--btn-bg-active);
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
 }
-
-.extensions-card-footer .switch input{
-  display: none;
-}
-
+/* ---- slider --- */
 .extensions-card-footer .switch{
   position: relative;
   width: 46px;
   height: 24px;
+}
+/* .extensions-card-footer .switch input{
+  display: none;
+} */
+
+.extensions-card-footer .switch input{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .extensions-card-footer .slider{
@@ -275,6 +296,12 @@ header .header-container .theme-toggle{
   transform: translateX(22px);
 }
 
+.extensions-card-footer .switch input:focus + .slider{
+   outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+
 /* ===== Footer =====*/
 .attribution{
   text-align: center;
@@ -299,4 +326,100 @@ header .header-container .theme-toggle{
   text-decoration: underline;
 }
 
+/* ----- Mobile version ----- */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+   .container {
+    margin: 0 15px;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  #logo {
+    width: 100px; /* صغري logo شوية */
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  #theme-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .extensions-list {
+    margin-top: 20px;
+  }
+
+  .extensions-list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   /* gap: 5px; */
+    text-align: center;
+  }
+
+  .extensions-list-header h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .nav-links ul {
+    padding: 0;
+    margin: 0;
+    
+  }
+
+  .extensions-list-header ul li button {
+    font-size: 24px;
+    /* padding: 6px 12px; */
+  }
+
+   .extensions-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .extensions-card {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .extensions-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .extensions-name {
+    font-size: 18px;
+  }
+
+  .extensions-description {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .attribution {
+    margin-top: 25px;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  .attribution a {
+    font-size: 14px;
+  }
+ 
+
+}
 
