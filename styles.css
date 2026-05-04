@@ -359,7 +359,7 @@ header .header-container .theme-toggle:focus{
   }
 
   .extensions-list {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .extensions-list-header {
@@ -383,7 +383,7 @@ header .header-container .theme-toggle:focus{
   }
 
   .extensions-list-header ul li button {
-    font-size: 25px;
+    font-size: 24px;
     /* padding: 6px 12px; */
   }
 
