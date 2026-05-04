@@ -371,9 +371,9 @@ header .header-container .theme-toggle:focus{
   }
 
   .extensions-list-header h2 {
-    /* font-size: 24px; */
+    font-size: 36px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .nav-links ul {
